@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Liste</title></head>
+<body>
+<h2>Liste des étudiants</h2>
+<table border="1">
+<tr><th>Nom</th><th>Prénom</th><th>Téléphone</th></tr>
+<tbody id="t"></tbody>
+</table>
+
+<script>
+let data=JSON.parse(localStorage.getItem("data"))||[];
+data.forEach(x=>{
+t.innerHTML+=`<tr><td>${x.nom}</td><td>${x.prenom}</td><td>${x.tel}</td></tr>`;
+});
+</script>
+
+</body>
+</html>

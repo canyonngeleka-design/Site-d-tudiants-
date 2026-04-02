@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title>Inscription</title></head>
+<body>
+<h2>Etudiant</h2>
+
+<input id="nom" placeholder="Nom"><br><br>
+<input id="prenom" placeholder="Prénom"><br><br>
+<input id="tel" placeholder="Téléphone"><br><br>
+
+<button onclick="add()">Enregistrer</button>
+<button onclick="del()">Supprimer</button>
+<button onclick="edit()">Modifier</button>
+<button onclick="search()">Rechercher</button>
+
+<script>
+let data=JSON.parse(localStorage.getItem("data"))||[];
+
+function add(){
+data.push({nom:nom.value,prenom:prenom.value,tel:tel.value});
+localStorage.setItem("data",JSON.stringify(data));
+alert("Ajouté");
+}
+
+function del(){
+data=data.filter(x=>x.nom!==nom.value);
+localStorage.setItem("data",JSON.stringify(data));
+alert("Supprimé");
+}
+
+function edit(){
+data=data.map(x=>x.nom===nom.value?{nom:nom.value,prenom:prenom.value,tel:tel.value}:x);
+localStorage.setItem("data",JSON.stringify(data));
+alert("Modifié");
+}
+
+function search(){
+let r=data.find(x=>x.nom===nom.value);
+alert(r? r.prenom+" "+r.tel:"Non trouvé");
+}
+</script>
+
+</body>
+</html>
